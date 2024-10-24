@@ -17,11 +17,23 @@ const port = process.env.PORT || 4000;
 //Middlewares
 app.use(express.json());
 
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  process.env.ADMIN_URL // Add your admin panel origin here
+];
+
 app.use(cors({
-  origin: process.env.FRONTEND_URL, // Allow your frontend's origin
-  methods: 'GET,POST,PUT,DELETE', // Add methods you want to allow
-  credentials: true, // Include if you are sending cookies
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: 'GET,POST,PUT,DELETE',
+  credentials: true,
 }));
+
 
 connectDB();
 connectCloudinary();
