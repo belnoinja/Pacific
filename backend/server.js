@@ -34,6 +34,9 @@ app.use(cors({
   credentials: true,
 }));
 
+app.options('*', cors()); // Enable pre-flight (OPTIONS) requests for all routes
+
+
 
 connectDB();
 connectCloudinary();
