@@ -16,9 +16,14 @@ const port = process.env.PORT || 4000;
 
 //Middlewares
 app.use(express.json());
+const cors = require('cors');
+
 app.use(cors({
-    origin: process.env.FRONTEND_URL
+  origin: process.env.FRONTEND_URL, // Allow your frontend's origin
+  methods: 'GET,POST,PUT,DELETE', // Add methods you want to allow
+  credentials: true, // Include if you are sending cookies
 }));
+
 connectDB();
 connectCloudinary();
 
