@@ -16,7 +16,6 @@ const port = process.env.PORT || 4000;
 
 //Middlewares
 app.use(express.json());
-const cors = require('cors');
 
 app.use(cors({
   origin: process.env.FRONTEND_URL, // Allow your frontend's origin
