@@ -1,0 +1,11 @@
+.swiper-button-prev,
+.swiper-button-next {
+  display: none; /* Hide buttons by default */
+}
+
+.relative:hover .swiper-button-prev,
+.relative:hover .swiper-button-next {
+  display: block; /* Show buttons on hover */
+}
+
+

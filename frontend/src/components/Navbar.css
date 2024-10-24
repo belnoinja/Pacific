@@ -1,0 +1,3 @@
+.dropdown-menu {
+    z-index: 999; /* Ensure it is on top */
+}
